@@ -2,5 +2,10 @@
 
 with open('notes/stocks.txt') as f:
       for line in f:
-            print line
+            pass
+#            print line
 
+
+line = line.rstrip()
+fields = line.split(',')
+print fields
