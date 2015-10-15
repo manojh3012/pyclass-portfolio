@@ -4,13 +4,16 @@ from collections import namedtuple
 
 Trade = namedtuple('Trade', ['symbol' ,'shares', 'price'])
 
-trades = []
-with open('notes/stocks.txt') as f:
-      for line in f:
-            line = line.rstrip()
-            symbol, shares, price = line.split(',')
-            trade = Trade(symbol, int(shares), float(price))
-            trades.append(trade)            
+def get_portfolio(filename):
+      trades = []
+      with open(filename) as f:
+            for line in f:
+                  line = line.rstrip()
+                  symbol, shares, price = line.split(',')
+                  trade = Trade(symbol, int(shares), float(price))
+                  trades.append(trade)
+      return trades
 
 
-pprint.pprint(trades)
+port = get_portfolio('notes/stocks.txt')
+pprint.pprint(port)
